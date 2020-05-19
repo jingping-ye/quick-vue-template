@@ -1,6 +1,6 @@
 {
   "name": "quick-vue-template",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "快速生成vue项目各种模板",
   "main": "gen.js",
   "bin": {

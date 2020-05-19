@@ -12,12 +12,11 @@
 ## 目录说明
 
 ```js
-|-- autoGen 自动生成目录
-	|-- apiTemplate.js api模板
-    |-- compTemplate.js vue组件模板
-    |-- gen.js 生成模板脚本
-    |-- routeTemplate.js 路由模板
-    |-- vuexTemplate.js vuex模板
+|-- apiTemplate.js api模板
+|-- compTemplate.js vue组件模板
+|-- gen.js 生成模板脚本
+|-- routeTemplate.js 路由模板
+|-- vuexTemplate.js vuex模板
 ```
 
 ## 使用步骤
@@ -35,7 +34,7 @@
    ```js
    "scripts": {
       	......
-       "gen": "node autoGen/gen"
+       "gen": "node quick-vue-template/gen"
      },
    ```
 
