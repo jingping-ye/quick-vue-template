@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const chalk = require("chalk");
 const path = require("path");
 const fs = require("fs");
@@ -85,7 +86,7 @@ const fileName = {
   type: "input",
   name: "fileName",
   message: "请输入文件名称（路径以@开头代表src，比如@/components/example.vue;文件请加上后缀）：",
-  validate: function(value) {
+  validate: function (value) {
     if (value.includes("/") || value.includes("\\")) {
       if (!value.startsWith("@")) {
         return "路径请以@开头，比如@/components/example.js";
@@ -111,7 +112,7 @@ function main() {
   chooseTemplateType();
 }
 
-const create8GenFile = function() {
+const create8GenFile = function () {
   //  组合根目录
   const rootPath = path.join(__dirname, "../");
   let genFilePath = "";
@@ -152,7 +153,7 @@ const create8GenFile = function() {
  */
 function dotExistDirectoryCreate(directory) {
   return new Promise((resolve) => {
-    mkdirs(directory, function() {
+    mkdirs(directory, function () {
       resolve(true);
     });
   });
@@ -168,7 +169,7 @@ function mkdirs(directory, callback) {
   if (exists) {
     callback();
   } else {
-    mkdirs(path.dirname(directory), function() {
+    mkdirs(path.dirname(directory), function () {
       fs.mkdirSync(directory);
       callback();
     });

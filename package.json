@@ -1,8 +1,11 @@
 {
   "name": "quick-vue-template",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "快速生成vue项目各种模板",
   "main": "gen.js",
+  "bin": {
+    "gen": "./autoGen/gen.js"
+  },
   "scripts": {
     "gen": "node autoGen/gen.js"
   },
