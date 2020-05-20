@@ -114,7 +114,7 @@ function main() {
 
 const create8GenFile = function () {
   //  组合根目录
-  const rootPath = path.join(__dirname, "../");
+  const rootPath = path.join(__dirname, "../../");
   let genFilePath = "";
   let genDirectoryPath = "";
   if (genFileName.startsWith("@")) {

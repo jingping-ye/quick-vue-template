@@ -27,28 +27,31 @@
    npm i quick-vue-template
    ```
 
-   将下载下来的文件放在项目根目录下。
+2. 因为模板生成依赖于`chalk `和`inquirer`两个包，所以先安装依赖
 
-2. 在项目的`package.json`中增加如下命令
-
-   ```js
-   "scripts": {
-      	......
-       "gen": "node quick-vue-template/gen"
-     },
+   ```bash
+   npm i chalk inquirer
    ```
+3. 在项目的`package.json`中增加如下命令
 
-3. 运行命令
+    ```js
+    "scripts": {
+        ......
+        "gen": "gen"
+      },
+    ```
+
+4. 运行命令
 
    ```js
    npm run gen
    ```
 
-4. 选择模板类型
+5. 选择模板类型
 
    ![支持的模板类型](http://ytju2r.coding-pages.com/生成模板功能.jpg)
 
-5. 输入生成文件名称
+6. 输入生成文件名称
 
    ![输入生成文件名称](http://ytju2r.coding-pages.com/生成文件路径.jpg)
 
@@ -70,7 +73,7 @@
 2. 依赖于`chalk`和` inquirer`,使用前请安装
 
    ```bash
-   npm i chalk inquirer
+    npm i chalk inquirer
    ```
 
 ## 模板示例
