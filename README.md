@@ -21,6 +21,8 @@
 
 ## 使用步骤
 
+### 通过npm安装
+
 1. 安装依赖
 
    ```js
@@ -60,17 +62,51 @@
 - 如果要指定文件路径，请以`@`开头（`@`代表的是`src`目录），比如`@/views/userList/userList.vue`生成的文件目录如下:
 
   ```text
-  |-- src
-  	|-- views
-  		|-- userList
-  			|-- userList.vue
+  |-src
+    |-views
+  	  |- userList
+  	      |- userList.vue
   ```
+
+## 通过github安装
+
+1. 下载git库
+
+   ```bash
+   git clone https://github.com/jingping-ye/quick-vue-template.git
+   ```
+
+2. 将下载下来的repo放在项目根目录下，如下:
+
+   ```text
+   |- project
+   	|- quick-vue-template // 下载下来的repo
+   	|- src // 项目的src目录
+   	|- ...
+   ```
+
+3. 安装相关依赖
+
+   ```bash
+   cnpm i inquirer chalk -D
+   ```
+
+4. 在`package.json`中添加如下命令
+
+   ```js
+   "scripts": {
+       ...
+       "gen": "node quick-vue-template gen"
+     },
+   ```
+
+5. 运行`npm run gen`即可
 
 ## 其他
 
-1. 如果要修改模板，只需在对应文件修改
+1. 如果要修改模板，只需在对应文件修改。
 
-2. 依赖于`chalk`和` inquirer`,使用前请安装
+2. 依赖于`chalk`和` inquirer`,使用前请安装。
 
    ```bash
     npm i chalk inquirer
@@ -176,9 +212,9 @@ export default {
 /**
  * Title: api
  * Author: 作者
- * Date: 2020-05-19 15:06:21
+ * Date: 2020-05-25 15:17:05
  * Description: API文档
- * LastModifiedDate:2020-05-19 15:06:21
+ * LastModifiedDate:2020-05-25 15:17:05
  * LastModifiedDescription: 修改描述
  */
 import http from "@/utils/http";
@@ -271,7 +307,9 @@ function deleteApi(argsParams = {}) {
  */
 function getApiDetail(argsParams = {}) {
   return http
-    .post(api.detail, argsParams)
+    .get(api.detail, {
+      params:argsParams
+    })
     .then(res => {
       return Promise.resolve(res);
     })
@@ -287,6 +325,7 @@ export default {
   deleteApi,
   getApiDetail
 };
+
 ```
 
 ## 路由文件

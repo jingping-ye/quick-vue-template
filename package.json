@@ -1,6 +1,6 @@
 {
   "name": "quick-vue-template",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "快速生成vue项目各种模板",
   "main": "gen.js",
   "bin": {
@@ -25,5 +25,9 @@
   "bugs": {
     "url": "https://github.com/jingping-ye/quick-vue-template/issues"
   },
-  "homepage": "https://github.com/jingping-ye/quick-vue-template#readme"
+  "homepage": "https://github.com/jingping-ye/quick-vue-template#readme",
+  "devDependencies": {
+    "chalk": "^4.0.0",
+    "inquirer": "^7.1.0"
+  }
 }

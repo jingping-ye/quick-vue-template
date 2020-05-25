@@ -1,23 +1,9 @@
-const formatNumber = (n) => {
-  n = n.toString();
-  return n[1] ? n : "0" + n;
-};
-// 时间格式化
-const formatTime = () => {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
-
-  return [year, month, day].map(formatNumber).join("-") + " " + [hour, minute, second].map(formatNumber).join(":");
-};
-
 /***
- * api文档模板
+ * route文档模板
  */
+
+const formatTime = require("./timeUtil");
+
 const routeTemplate = (fileName) => {
   const upperFileName = fileName.replace(fileName[0], fileName[0].toUpperCase());
   const templateFile = `/**
