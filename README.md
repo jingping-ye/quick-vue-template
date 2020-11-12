@@ -8,6 +8,7 @@
 - api 文件
 - 路由文件
 - vuex 文件
+- mock 文件
 
 ## 目录说明
 
@@ -17,11 +18,12 @@
 |-- gen.js 生成模板脚本
 |-- routeTemplate.js 路由模板
 |-- vuexTemplate.js vuex模板
+|-- mockTemplate.js mock模板
 ```
 
 ## 使用步骤
 
-### 通过npm安装
+### 通过 npm 安装
 
 1. 安装依赖
 
@@ -29,19 +31,20 @@
    npm i quick-vue-template
    ```
 
-2. 因为模板生成依赖于`chalk `和`inquirer`两个包，所以先安装依赖
+2. 因为模板生成依赖于`chalk`和`inquirer`两个包，所以先安装依赖
 
    ```bash
    npm i chalk inquirer
    ```
+
 3. 在项目的`package.json`中增加如下命令
 
-    ```js
-    "scripts": {
-        ......
-        "gen": "gen"
-      },
-    ```
+   ```js
+   "scripts": {
+       ......
+       "gen": "gen"
+     },
+   ```
 
 4. 运行命令
 
@@ -68,15 +71,15 @@
   	      |- userList.vue
   ```
 
-## 通过github安装
+## 通过 github 安装
 
-1. 下载git库
+1. 下载 git 库
 
    ```bash
    git clone https://github.com/jingping-ye/quick-vue-template.git
    ```
 
-2. 将下载下来的repo放在项目根目录下，如下:
+2. 将下载下来的 repo 放在项目根目录下，如下:
 
    ```text
    |- project
@@ -106,7 +109,7 @@
 
 1. 如果要修改模板，只需在对应文件修改。
 
-2. 依赖于`chalk`和` inquirer`,使用前请安装。
+2. 依赖于`chalk`和`inquirer`,使用前请安装。
 
    ```bash
     npm i chalk inquirer
@@ -114,7 +117,7 @@
 
 ## 模板示例
 
-### vue组件-简单模式
+### vue 组件-简单模式
 
 ```js
 <template>
@@ -158,7 +161,7 @@ export default {
 </style>
 ```
 
-### vue组件-完全模式
+### vue 组件-完全模式
 
 ```js
 <template>
@@ -206,7 +209,7 @@ export default {
 </style>
 ```
 
-### api模板
+### api 模板
 
 ```js
 /**
@@ -224,8 +227,8 @@ const api = {
   list: `${prefix}/api/list`,
   update: `${prefix}/api/update`,
   delete: `${prefix}/api/delete`,
-  add:  `${prefix}/api/add`,
-  detail: `${prefix}/api/detail`
+  add: `${prefix}/api/add`,
+  detail: `${prefix}/api/detail`,
 };
 
 /**
@@ -238,12 +241,12 @@ const api = {
 function getApiList(argsParams = {}) {
   return http
     .get(api.list, {
-      params: argsParams
+      params: argsParams,
     })
-    .then(res => {
+    .then((res) => {
       return Promise.resolve(res);
     })
-    .catch(err => {
+    .catch((err) => {
       return Promise.reject(err);
     });
 }
@@ -257,10 +260,10 @@ function getApiList(argsParams = {}) {
 function updateApi(argsParams = {}) {
   return http
     .put(api.update, argsParams)
-    .then(res => {
+    .then((res) => {
       return Promise.resolve(res);
     })
-    .catch(err => {
+    .catch((err) => {
       return Promise.reject(err);
     });
 }
@@ -274,10 +277,10 @@ function updateApi(argsParams = {}) {
 function addApi(argsParams = {}) {
   return http
     .post(api.add, argsParams)
-    .then(res => {
+    .then((res) => {
       return Promise.resolve(res);
     })
-    .catch(err => {
+    .catch((err) => {
       return Promise.reject(err);
     });
 }
@@ -291,10 +294,10 @@ function addApi(argsParams = {}) {
 function deleteApi(argsParams = {}) {
   return http
     .delete(api.delete, { data: { ...argsParams } })
-    .then(res => {
+    .then((res) => {
       return Promise.resolve(res);
     })
-    .catch(err => {
+    .catch((err) => {
       return Promise.reject(err);
     });
 }
@@ -308,12 +311,12 @@ function deleteApi(argsParams = {}) {
 function getApiDetail(argsParams = {}) {
   return http
     .get(api.detail, {
-      params:argsParams
+      params: argsParams,
     })
-    .then(res => {
+    .then((res) => {
       return Promise.resolve(res);
     })
-    .catch(err => {
+    .catch((err) => {
       return Promise.reject(err);
     });
 }
@@ -323,9 +326,8 @@ export default {
   updateApi,
   addApi,
   deleteApi,
-  getApiDetail
+  getApiDetail,
 };
-
 ```
 
 ## 路由文件
@@ -346,27 +348,27 @@ const routeRoute = [
     redirect: "route",
     component: () => import("someComponent"),
     meta: {
-      title: "route"
+      title: "route",
     },
     children: [
       {
         path: "route",
         name: "Route",
         components: {
-          default: () => import("someComponent")
+          default: () => import("someComponent"),
         },
         meta: {
           title: "菜单名称",
-          icon: "code"
-        }
-      }
-    ]
-  }
+          icon: "code",
+        },
+      },
+    ],
+  },
 ];
 export { routeRoute };
 ```
 
-### vuex文件
+### vuex 文件
 
 ```js
 /**
@@ -390,7 +392,79 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
 };
 ```
 
+### mock 文件
+
+```js
+/**
+ * Title: user
+ * Author: 作者
+ * Date: 2020-06-03 22:41:11
+ * Description: mock文档
+ * LastModifiedDate:2020-06-03 22:41:11
+ * LastModifiedDescription: 修改描述
+ */
+import { user } from "../data/user";
+import { getQueryParam } from "@/utils/comUtils";
+
+let userList = user;
+
+const userService = {
+  add(config) {
+    const { name } = JSON.parse(config.body);
+    let addId = userList.length < 10 ? `0${userList.length + 1}` : userList.length + 1;
+    userList.push({
+      id: `user_${addId}`,
+      name,
+    });
+    return {
+      code: 20000,
+      data: {
+        message: "添加成功",
+      },
+    };
+  },
+  delete(config) {
+    const { id } = JSON.parse(config.body);
+    userList = userList.filter((item) => item.id !== id);
+    return {
+      code: 20000,
+      data: {
+        message: "删除成功",
+      },
+    };
+  },
+  update(config) {
+    const { id, name } = JSON.parse(config.body);
+    let updateIndex = userList.findIndex((item) => item.id === id);
+    userList[updateIndex] = {
+      id: id,
+      name: name,
+    };
+
+    return {
+      code: 20000,
+      data: {
+        message: "更新成功",
+      },
+    };
+  },
+  getList(config) {
+    let queryParams = getQueryParam(config.url);
+    let { pageNum = 1, pageSize = 10 } = queryParams;
+    //  数据分页
+    const pageList = userList.filter((item, index) => index < pageSize * pageNum && index >= pageSize * (pageNum - 1));
+    return {
+      code: 20000,
+      data: {
+        total: userList.length,
+        list: pageList,
+      },
+    };
+  },
+};
+export default userService;
+```

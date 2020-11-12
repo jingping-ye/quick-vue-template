@@ -14,6 +14,7 @@ const { simpleVueComp, fullVueComp } = require("./compTemplate");
 const { routeTemplate } = require("./routeTemplate");
 const { vuexTemplate } = require("./vuexTemplate");
 const { apiTemplate } = require("./apiTemplate");
+const { mockTemplate } = require("./mockTemplate");
 
 const templateCol = {
   simpleVueComp,
@@ -21,6 +22,7 @@ const templateCol = {
   routeTemplate,
   vuexTemplate,
   apiTemplate,
+  mockTemplate,
 };
 
 let genTemplateType = ""; //模板类型
@@ -38,6 +40,7 @@ const templateTypePrompt = {
     { name: "api文件", value: "apiTemplate" },
     { name: "路由文件", value: "routeTemplate" },
     { name: "vuex文件", value: "vuexTemplate" },
+    { name: "mock文件", value: "mockTemplate" },
   ],
 };
 
@@ -73,7 +76,6 @@ const compTypePrompt = {
  */
 function chooseVueCompType() {
   inquirer.prompt(compTypePrompt).then((answers) => {
-    console.log("answers", answers);
     genTemplateType = answers.compTemplateType;
     inputFileName();
   });
@@ -85,7 +87,7 @@ function chooseVueCompType() {
 const fileName = {
   type: "input",
   name: "fileName",
-  message: "请输入文件名称（路径以@开头代表src，比如@/components/example.vue;文件请加上后缀）：",
+  message: "请输入文件名称（路径以@开头代表src，比如@/components/example.vue;文件请加上后缀）:",
   validate: function (value) {
     if (value.includes("/") || value.includes("\\")) {
       if (!value.startsWith("@")) {
